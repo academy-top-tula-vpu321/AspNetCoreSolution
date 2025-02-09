@@ -60,8 +60,6 @@ async Task GetAllEmployeesAsync(HttpResponse response)
     await response.WriteAsJsonAsync(employees);
 }
 
-
-
 async Task GetEmployee(string? id, HttpResponse response)
 {
     Employee? employee = employees.FirstOrDefault(e => e.Id.ToString() == id);
@@ -73,8 +71,6 @@ async Task GetEmployee(string? id, HttpResponse response)
         await response.WriteAsJsonAsync(new { message = "Employee not found" });
     }
 }
-
-
 
 async Task AddEmployee(HttpRequest request, HttpResponse response)
 {
@@ -98,7 +94,6 @@ async Task AddEmployee(HttpRequest request, HttpResponse response)
         await response.WriteAsJsonAsync(new { message = ex.Message });
     }
 }
-
 
 async Task EditEmployee(HttpRequest request, HttpResponse response)
 {

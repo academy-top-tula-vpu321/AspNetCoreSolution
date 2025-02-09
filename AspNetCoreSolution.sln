@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetWelcomeApp", "AspNetW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetRestApiApp", "AspNetRestApiApp\AspNetRestApiApp.csproj", "{1AFF505C-9923-477E-9E9A-C3DF4EE205F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetUseMethodApp", "AspNetUseMethodApp\AspNetUseMethodApp.csproj", "{4F690DBB-E272-4BBF-AD37-DC1C25158877}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1AFF505C-9923-477E-9E9A-C3DF4EE205F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AFF505C-9923-477E-9E9A-C3DF4EE205F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AFF505C-9923-477E-9E9A-C3DF4EE205F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F690DBB-E272-4BBF-AD37-DC1C25158877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F690DBB-E272-4BBF-AD37-DC1C25158877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F690DBB-E272-4BBF-AD37-DC1C25158877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F690DBB-E272-4BBF-AD37-DC1C25158877}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
