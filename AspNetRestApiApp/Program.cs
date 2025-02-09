@@ -62,7 +62,7 @@ async Task GetAllEmployeesAsync(HttpResponse response)
 
 
 
-async Task GetEmployee(string id, HttpResponse response)
+async Task GetEmployee(string? id, HttpResponse response)
 {
     Employee? employee = employees.FirstOrDefault(e => e.Id.ToString() == id);
     if(employee is not null)

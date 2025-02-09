@@ -3,9 +3,29 @@
 <head>
     <meta charset="utf-8" />
     <title>Employees Admin Panel</title>
+    <style>
+        div{
+            margin: 20px;
+        }
+        td{
+            padding: 10px;
+        }
+
+        table{
+            border-spacing: 0;
+            width: 50%;
+        }
+
+        td{
+            border: solid 1px black;
+        }
+    </style>
 </head>
 <body>
     <h2>Employees List:</h2>
+    <div>
+        <input type="hidden" id="guid" />
+    </div>
     <div>
         <label>Name:</label>
         <input type="text" id="name" />
@@ -15,7 +35,7 @@
         <input type="number" id="age" />
     </div>
     <div>
-        <button id="btnSave">Save</button>
+        <button id="btnSave">Add</button>
         <button id="btnCancel">Cancel</button>
     </div>
 
@@ -30,5 +50,104 @@
         </thead>
         <tbody></tbody>
     </table>
+
+    <script>
+        async function getEmployees() {
+            let response = await fetch("/api/employees", {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok === true) {
+                let employees = await response.json();
+
+                console.log("employees");
+                console.log(employees);
+
+                let tbody = document.querySelector("tbody");
+
+                employees.forEach((employee) =>
+                    tbody.append(createEmployeeRow(employee)));
+            }
+        }
+
+        async function getEmployee(id) {
+            let response = await fetch(`/api/employees/${id}`, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json"
+                }
+            });
+
+            if (response.ok === true) {
+                let employee = await response.json();
+
+                document.getElementById("guid").value = employee.id;
+                document.getElementById("name").value = employee.name;
+                document.getElementById("age").value = employee.age;
+            }
+            else {
+                let error = await response.json();
+                console.log(error.message);
+            }
+        }
+
+        async function addEmployee(name, age) {
+
+        }
+
+        async function editEmployee(id, name, age) {
+
+        }
+
+        async function deleteEmployee(id) {
+
+        }
+
+
+        function createEmployeeRow(employee) {
+
+            console.log("employee");
+            console.log(employee);
+
+            let tr = document.createElement("tr");
+            tr.setAttribute("data-id", employee.id);
+
+            let tdName = document.createElement("td");
+            tdName.append(employee.name);
+            tr.append(tdName);
+
+            let tdAge = document.createElement("td");
+            tdAge.append(employee.age);
+            tr.append(tdAge);
+
+            let tdEdit = document.createElement("td");
+            let btnEdit = document.createElement("button");
+            btnEdit.append("Edit");
+            btnEdit.addEventListener("click", async () => {
+                await getEmployee(employee.id)
+            });
+            tdEdit.append(btnEdit);
+            tr.append(tdEdit);
+
+            let tdDelete = document.createElement("td");
+            let btnDelete = document.createElement("button");
+            btnDelete.append("Delete");
+            btnDelete.addEventListener("click", async () => {
+                await deleteEmployee(employee.id);
+            });
+            tdDelete.append(btnDelete);
+            tr.append(tdDelete);
+
+            return tr;
+        }
+
+
+        getEmployees();
+
+    </script>
+
 </body>
 </html>
